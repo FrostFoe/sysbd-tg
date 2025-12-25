@@ -28,20 +28,20 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-[400px] rounded-2xl bg-white p-10 shadow-xl flex flex-col items-center animate-in fade-in zoom-in duration-300">
-        <div className="w-32 h-32 rounded-full flex items-center justify-center mb-6 bg-[#3390ec]">
+    <div className="flex min-h-screen items-center justify-center bg-surface p-4">
+      <div className="w-full max-w-[400px] rounded-2xl bg-page p-10 shadow-xl border border-default flex flex-col items-center animate-in fade-in zoom-in duration-300">
+        <div className="w-32 h-32 rounded-full flex items-center justify-center mb-6 bg-accent">
           <UserPlus className="w-16 h-16 text-white" />
         </div>
         
-        <h1 className="text-2xl font-bold mb-2 text-gray-900">Create Account</h1>
-        <p className="text-center mb-8 text-gray-500 text-[15px]">
+        <h1 className="text-2xl font-bold mb-2 text-primary">Create Account</h1>
+        <p className="text-center mb-8 text-secondary text-[15px]">
           Join the real-time chat community.
         </p>
 
         {error && (
-          <div className="w-full mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-red-600 text-sm text-center font-medium">{error}</p>
+          <div className="w-full mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+            <p className="text-red-500 text-sm text-center font-medium">{error}</p>
           </div>
         )}
 
@@ -52,13 +52,13 @@ export default function RegisterPage() {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="peer w-full border border-gray-300 rounded-xl px-4 pt-5 pb-2 outline-none transition-colors focus:border-[#3390ec] bg-transparent text-gray-900"
+              className="peer w-full border border-input rounded-xl px-4 pt-5 pb-2 outline-none transition-colors focus:border-accent bg-transparent text-primary"
               required
               disabled={isSubmitting}
             />
             <label
               htmlFor="username"
-              className={`absolute left-4 top-3.5 text-gray-500 text-base transition-all duration-200 peer-focus:text-xs peer-focus:top-1 peer-focus:text-[#3390ec] ${username ? 'text-xs top-1' : ''}`}
+              className={`absolute left-4 top-3.5 text-muted text-base transition-all duration-200 peer-focus:text-xs peer-focus:top-1 peer-focus:text-accent ${username ? 'text-xs top-1' : ''}`}
             >
               Username
             </label>
@@ -70,13 +70,13 @@ export default function RegisterPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="peer w-full border border-gray-300 rounded-xl px-4 pt-5 pb-2 outline-none transition-colors focus:border-[#3390ec] bg-transparent text-gray-900"
+              className="peer w-full border border-input rounded-xl px-4 pt-5 pb-2 outline-none transition-colors focus:border-accent bg-transparent text-primary"
               required
               disabled={isSubmitting}
             />
             <label
               htmlFor="email"
-              className={`absolute left-4 top-3.5 text-gray-500 text-base transition-all duration-200 peer-focus:text-xs peer-focus:top-1 peer-focus:text-[#3390ec] ${email ? 'text-xs top-1' : ''}`}
+              className={`absolute left-4 top-3.5 text-muted text-base transition-all duration-200 peer-focus:text-xs peer-focus:top-1 peer-focus:text-accent ${email ? 'text-xs top-1' : ''}`}
             >
               Email
             </label>
@@ -88,20 +88,20 @@ export default function RegisterPage() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="peer w-full border border-gray-300 rounded-xl px-4 pt-5 pb-2 pr-10 outline-none transition-colors focus:border-[#3390ec] bg-transparent text-gray-900"
+              className="peer w-full border border-input rounded-xl px-4 pt-5 pb-2 pr-10 outline-none transition-colors focus:border-accent bg-transparent text-primary"
               required
               disabled={isSubmitting}
             />
             <label
               htmlFor="password"
-              className={`absolute left-4 top-3.5 text-gray-500 text-base transition-all duration-200 peer-focus:text-xs peer-focus:top-1 peer-focus:text-[#3390ec] ${password ? 'text-xs top-1' : ''}`}
+              className={`absolute left-4 top-3.5 text-muted text-base transition-all duration-200 peer-focus:text-xs peer-focus:top-1 peer-focus:text-accent ${password ? 'text-xs top-1' : ''}`}
             >
               Password
             </label>
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-4 text-gray-400 hover:text-gray-600 transition"
+              className="absolute right-3 top-4 text-muted hover:text-secondary transition"
               disabled={isSubmitting}
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -111,7 +111,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 rounded-xl font-bold text-white transition-all active:scale-95 flex justify-center items-center bg-[#3390ec] shadow-lg shadow-blue-200 ${isSubmitting ? 'opacity-80 cursor-not-allowed' : 'hover:opacity-90'}`}
+            className={`w-full py-3 rounded-xl font-bold text-white transition-all active:scale-95 flex justify-center items-center bg-accent shadow-lg shadow-blue-500/30 ${isSubmitting ? 'opacity-80 cursor-not-allowed' : 'hover:opacity-90'}`}
           >
             {isSubmitting ? (
               <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -119,9 +119,9 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        <p className="mt-8 text-center text-sm text-gray-600">
+        <p className="mt-8 text-center text-sm text-secondary">
           Already have an account?{" "}
-          <Link href="/login" className="text-[#3390ec] font-semibold hover:underline">
+          <Link href="/login" className="text-accent font-semibold hover:underline">
             Login
           </Link>
         </p>

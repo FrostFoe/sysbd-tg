@@ -22,24 +22,24 @@ export default function SidebarHeader({ searchQuery, setSearchQuery }) {
             onClick={() => setSidebarView('main')}
             className="p-2 rounded-full hover:bg-hover transition"
           >
-            <ArrowLeft className="w-6 h-6 text-gray-500" />
+            <ArrowLeft className="w-6 h-6 text-muted hover:text-primary" />
           </button>
         ) : (
           <button
             onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
-            className={`p-2 rounded-full transition ${isMainMenuOpen ? 'bg-hover text-accent' : 'text-gray-500 hover:bg-hover'}`}
+            className={`p-2 rounded-full transition ${isMainMenuOpen ? 'bg-hover text-accent' : 'text-muted hover:bg-hover hover:text-primary'}`}
           >
             <Menu className="w-6 h-6" />
           </button>
         )}
         <div className={`flex-1 rounded-full flex items-center px-4 py-2 border focus-within:border-accent transition group bg-input border-input`}>
-          <Search className="w-5 h-5 text-gray-400 group-focus-within:text-accent" />
+          <Search className="w-5 h-5 text-muted group-focus-within:text-accent" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search"
-            className="bg-transparent border-none outline-none text-sm ml-2 w-full placeholder-gray-500 text-primary"
+            className="bg-transparent border-none outline-none text-sm ml-2 w-full placeholder-muted text-primary"
           />
         </div>
       </div>
@@ -51,33 +51,33 @@ export default function SidebarHeader({ searchQuery, setSearchQuery }) {
           <div className={`absolute top-14 left-4 rounded-xl shadow-xl border w-64 py-2 z-50 animate-in fade-in zoom-in duration-150 origin-top-left flex flex-col bg-surface border-default`}>
             <button 
               onClick={() => { setSidebarView('main'); setActiveFolder('Saved'); setIsMainMenuOpen(false); }}
-              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover"
+              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover text-primary"
             >
-              <Bookmark className="w-5 h-5 text-gray-500" /> Saved Messages
+              <Bookmark className="w-5 h-5 text-muted" /> Saved Messages
             </button>
             <button 
               onClick={() => { setSidebarView('archived'); setIsMainMenuOpen(false); }}
-              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover"
+              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover text-primary"
             >
-              <Archive className="w-5 h-5 text-gray-500" /> Archived Chats
+              <Archive className="w-5 h-5 text-muted" /> Archived Chats
             </button>
             <button 
               onClick={() => { setSidebarView('contacts'); setIsMainMenuOpen(false); }}
-              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover"
+              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover text-primary"
             >
-              <Users className="w-5 h-5 text-gray-500" /> Contacts
+              <Users className="w-5 h-5 text-muted" /> Contacts
             </button>
             <button 
               onClick={() => { setSidebarView('settings'); setIsMainMenuOpen(false); }}
-              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover"
+              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover text-primary"
             >
-              <Settings className="w-5 h-5 text-gray-500" /> Settings
+              <Settings className="w-5 h-5 text-muted" /> Settings
             </button>
             <button 
               onClick={toggleDarkMode}
-              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover"
+              className="flex items-center gap-4 px-4 py-2.5 transition hover:bg-hover text-primary"
             >
-              {darkMode ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-500" />}
+              {darkMode ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-muted" />}
               {darkMode ? "Light Mode" : "Night Mode"}
             </button>
             <div className="h-px bg-border-default my-1" />

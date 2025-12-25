@@ -10,10 +10,10 @@ export default function StoriesBar() {
   return (
     <div className="flex gap-4 overflow-x-auto no-scrollbar mt-1 pb-2 px-1">
       <div className="flex flex-col items-center gap-1 min-w-[60px] cursor-pointer group">
-        <div className="w-14 h-14 rounded-full border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center text-gray-400 group-hover:border-accent transition">
+        <div className="w-14 h-14 rounded-full border-2 border-dashed border-default flex items-center justify-center text-muted group-hover:border-accent transition">
           <Plus size={24} />
         </div>
-        <span className="text-xs text-gray-500 font-medium">Story</span>
+        <span className="text-xs text-secondary font-medium">Story</span>
       </div>
       {MOCK_STORIES.map(s => (
         <div 
@@ -22,7 +22,7 @@ export default function StoriesBar() {
           className="flex flex-col items-center gap-1 min-w-[60px] cursor-pointer"
         >
           <div className="w-14 h-14 rounded-full p-[2px] bg-accent">
-            <div className="w-full h-full rounded-full border-2 border-white dark:border-[#212121] bg-gray-200 flex items-center justify-center font-bold text-accent">
+            <div className="w-full h-full rounded-full border-2 border-surface bg-input flex items-center justify-center font-bold text-accent">
               {s.avatar}
             </div>
           </div>

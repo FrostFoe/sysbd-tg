@@ -32,7 +32,7 @@ export default function MessageBubble({ message, isOwn, type = "private", onCont
         {message.replyToId && (
           <div 
             onClick={() => onReplyClick(message.replyToId)}
-            className={`mb-1 pl-2 border-l-2 text-xs opacity-80 cursor-pointer border-accent bg-black/5 rounded py-1 max-w-xs`}
+            className={`mb-1 pl-2 border-l-2 text-xs opacity-80 cursor-pointer border-accent bg-black/5 dark:bg-white/10 rounded py-1 max-w-xs`}
             style={isOwn ? { borderColor: 'rgba(255,255,255,0.6)' } : {}}
           >
             <div className="font-bold">Reply</div>
@@ -76,7 +76,7 @@ export default function MessageBubble({ message, isOwn, type = "private", onCont
 
         <div className={`float-right flex items-center gap-1 ml-2 mt-2 select-none h-3 relative top-0.5 ${(isSticker || isGif) ? 'bg-black/20 text-white rounded px-1' : ''}`}>
           {message.isEdited && <span className="text-[10px] opacity-50">edited</span>}
-          <span className={`text-[11px] ${isOwn ? "text-white/70" : "text-gray-400"}`}>
+          <span className={`text-[11px] ${isOwn ? "text-white/70" : "text-muted"}`}>
             {new Date(message.$createdAt || message.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
           </span>
           {isOwn && (message.status === "read" ? <CheckCheck className="w-3.5 h-3.5" /> : <Check className="w-3.5 h-3.5 opacity-70" />)}

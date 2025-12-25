@@ -70,23 +70,23 @@ export default function MessageInput({ onSendMessage, onSendMedia, initialText =
   }, []);
 
   return (
-    <div className="px-2 py-2 z-30 w-full bg-white dark:bg-[#212121] border-t border-gray-200 dark:border-black relative">
+    <div className="px-2 py-2 z-30 w-full bg-surface border-t border-default relative">
       
       {isAttachMenuOpen && (
-        <div className="absolute bottom-16 left-2 w-52 bg-white dark:bg-[#212121] rounded-xl shadow-xl border border-gray-100 dark:border-black py-2 animate-in slide-in-from-bottom-2 duration-200 flex flex-col z-50">
-          <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-4 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white"><ImageIcon size={20} className="text-blue-500" /> Photo or Video</button>
-          <button onClick={() => { setIsDrawingOpen(true); setIsAttachMenuOpen(false); }} className="flex items-center gap-4 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white"><PenTool size={20} className="text-orange-500" /> Draw</button>
-          <button onClick={() => { onSendMessage("", "game"); setIsAttachMenuOpen(false); }} className="flex items-center gap-4 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white"><Gamepad2 size={20} className="text-purple-500" /> Game</button>
-          <button onClick={() => { setIsPollModalOpen(true); setIsAttachMenuOpen(false); }} className="flex items-center gap-4 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white"><BarChart2 size={20} className="text-yellow-500" /> Poll</button>
-          <button className="flex items-center gap-4 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white"><Film size={20} className="text-blue-400" /> File</button>
+        <div className="absolute bottom-16 left-2 w-52 bg-surface rounded-xl shadow-xl border border-default py-2 animate-in slide-in-from-bottom-2 duration-200 flex flex-col z-50">
+          <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-4 px-4 py-2.5 hover:bg-hover text-sm text-primary"><ImageIcon size={20} className="text-blue-500" /> Photo or Video</button>
+          <button onClick={() => { setIsDrawingOpen(true); setIsAttachMenuOpen(false); }} className="flex items-center gap-4 px-4 py-2.5 hover:bg-hover text-sm text-primary"><PenTool size={20} className="text-orange-500" /> Draw</button>
+          <button onClick={() => { onSendMessage("", "game"); setIsAttachMenuOpen(false); }} className="flex items-center gap-4 px-4 py-2.5 hover:bg-hover text-sm text-primary"><Gamepad2 size={20} className="text-purple-500" /> Game</button>
+          <button onClick={() => { setIsPollModalOpen(true); setIsAttachMenuOpen(false); }} className="flex items-center gap-4 px-4 py-2.5 hover:bg-hover text-sm text-primary"><BarChart2 size={20} className="text-yellow-500" /> Poll</button>
+          <button className="flex items-center gap-4 px-4 py-2.5 hover:bg-hover text-sm text-primary"><Film size={20} className="text-blue-400" /> File</button>
         </div>
       )}
 
       {isTimerMenuOpen && (
-        <div className="absolute bottom-16 right-14 w-32 bg-white dark:bg-[#212121] rounded-xl shadow-xl border border-gray-100 dark:border-black py-2 animate-in slide-in-from-bottom-2 duration-200 flex flex-col z-50">
-          <div className="px-4 py-1 text-[10px] font-bold text-gray-400 uppercase">Self-Destruct</div>
+        <div className="absolute bottom-16 right-14 w-32 bg-surface rounded-xl shadow-xl border border-default py-2 animate-in slide-in-from-bottom-2 duration-200 flex flex-col z-50">
+          <div className="px-4 py-1 text-[10px] font-bold text-muted uppercase">Self-Destruct</div>
           {[0, 5, 10, 30, 60].map(t => (
-            <button key={t} onClick={() => setSelfDestructTime(t)} className="flex items-center justify-between px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white">
+            <button key={t} onClick={() => setSelfDestructTime(t)} className="flex items-center justify-between px-4 py-2 hover:bg-hover text-sm text-primary">
               <span>{t === 0 ? 'Off' : `${t}s`}</span>
               {selfDestructTime === t && <Check size={14} className="text-accent" />}
             </button>
@@ -95,24 +95,24 @@ export default function MessageInput({ onSendMessage, onSendMedia, initialText =
       )}
 
       {isScheduleMenuOpen && (
-        <div className="absolute bottom-16 right-4 w-48 bg-white dark:bg-[#212121] rounded-xl shadow-xl border border-gray-100 dark:border-black py-2 animate-in slide-in-from-bottom-2 duration-200 flex flex-col z-50">
-          <button onClick={(e) => handleSubmit(e, true)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white"><Clock size={16} /> Schedule Message</button>
-          <button onClick={(e) => handleSubmit(e, false)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm dark:text-white"><Send size={16} /> Send Now</button>
+        <div className="absolute bottom-16 right-4 w-48 bg-surface rounded-xl shadow-xl border border-default py-2 animate-in slide-in-from-bottom-2 duration-200 flex flex-col z-50">
+          <button onClick={(e) => handleSubmit(e, true)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-hover text-sm text-primary"><Clock size={16} /> Schedule Message</button>
+          <button onClick={(e) => handleSubmit(e, false)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-hover text-sm text-primary"><Send size={16} /> Send Now</button>
         </div>
       )}
 
       {showEmojiPicker && (
-        <div className="absolute bottom-full left-0 mb-2 w-80 h-72 bg-white dark:bg-[#212121] rounded-xl shadow-2xl border border-gray-100 dark:border-black flex flex-col overflow-hidden z-50">
-          <div className="flex border-b dark:border-gray-800">
+        <div className="absolute bottom-full left-0 mb-2 w-80 h-72 bg-surface rounded-xl shadow-2xl border border-default flex flex-col overflow-hidden z-50">
+          <div className="flex border-b border-default">
             {['emoji', 'sticker', 'gif'].map(tab => (
-              <button key={tab} onClick={(e) => { e.stopPropagation(); setPickerTab(tab); }} className={`flex-1 py-2 text-[10px] font-bold uppercase transition ${pickerTab === tab ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}>{tab}</button>
+              <button key={tab} onClick={(e) => { e.stopPropagation(); setPickerTab(tab); }} className={`flex-1 py-2 text-[10px] font-bold uppercase transition ${pickerTab === tab ? 'text-accent border-b-2 border-accent' : 'text-muted'}`}>{tab}</button>
             ))}
           </div>
           <div className="flex-1 p-2 overflow-y-auto custom-scrollbar">
             {pickerTab === 'emoji' && (
               <div className="grid grid-cols-7 gap-1">
                 {COMMON_EMOJIS.map(e => (
-                  <button key={e} onClick={(ev) => { ev.stopPropagation(); setText(t => t + e); }} className="text-2xl hover:bg-gray-100 dark:hover:bg-gray-800 rounded p-1 transition">{e}</button>
+                  <button key={e} onClick={(ev) => { ev.stopPropagation(); setText(t => t + e); }} className="text-2xl hover:bg-hover rounded p-1 transition">{e}</button>
                 ))}
               </div>
             )}
@@ -138,33 +138,33 @@ export default function MessageInput({ onSendMessage, onSendMedia, initialText =
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); setIsAttachMenuOpen(!isAttachMenuOpen); }}
-          className={`p-3 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition ${isAttachMenuOpen ? 'rotate-45' : ''}`}
+          className={`p-3 text-muted hover:bg-hover rounded-full transition ${isAttachMenuOpen ? 'rotate-45' : ''}`}
         >
           <Paperclip className="w-6 h-6" />
         </button>
         
         <input type="file" ref={fileInputRef} className="hidden" accept="image/*,video/*" onChange={handleMediaChange} />
 
-        <div className="flex-1 relative rounded-2xl flex items-center bg-gray-100 dark:bg-[#1c1c1d]">
+        <div className="flex-1 relative rounded-2xl flex items-center bg-input">
           <input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSubmit(e)}
             placeholder="Message"
-            className="flex-1 bg-transparent border-none outline-none px-4 py-3 text-gray-900 dark:text-white"
+            className="flex-1 bg-transparent border-none outline-none px-4 py-3 text-primary placeholder-muted"
           />
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setIsTimerMenuOpen(!isTimerMenuOpen); }}
-            className={`p-2 transition ${selfDestructTime > 0 ? 'text-red-500' : 'text-gray-400 hover:text-gray-600'}`}
+            className={`p-2 transition ${selfDestructTime > 0 ? 'text-red-500' : 'text-muted hover:text-secondary'}`}
           >
             <Clock size={20} />
           </button>
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setShowEmojiPicker(!showEmojiPicker); }}
-            className="p-3 text-gray-400 hover:text-gray-600 transition"
+            className="p-3 text-muted hover:text-secondary transition"
           >
             <Smile className="w-6 h-6" />
           </button>
@@ -179,7 +179,7 @@ export default function MessageInput({ onSendMessage, onSendMedia, initialText =
             <Send className="w-6 h-6 fill-current" />
           </button>
         ) : (
-          <button type="button" className="p-3 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition">
+          <button type="button" className="p-3 text-muted hover:bg-hover rounded-full transition">
             <Mic className="w-6 h-6" />
           </button>
         )}

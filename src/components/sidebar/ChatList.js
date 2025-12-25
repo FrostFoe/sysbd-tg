@@ -8,11 +8,11 @@ export default function ChatList({ chats, fetching, onContextMenu }) {
   const { chatId: activeChatId } = useParams();
 
   if (fetching) {
-    return <div className="p-4 text-center text-gray-400 text-sm">Loading...</div>;
+    return <div className="p-4 text-center text-muted text-sm">Loading...</div>;
   }
 
   if (chats.length === 0) {
-    return <div className="p-8 text-center text-gray-400 text-sm">No chats found</div>;
+    return <div className="p-8 text-center text-muted text-sm">No chats found</div>;
   }
 
   return (
@@ -31,12 +31,12 @@ export default function ChatList({ chats, fetching, onContextMenu }) {
           </div>
           <div className={`flex-1 min-w-0 border-b pb-2 ml-1 h-full flex flex-col justify-center border-default ${activeChatId === chat.$id ? 'border-transparent' : ''}`}>
             <div className="flex justify-between items-baseline">
-              <h3 className="font-semibold text-[15px] truncate text-primary">{chat.name}</h3>
-              <span className={`text-xs ${activeChatId === chat.$id ? 'text-white/80' : 'text-gray-400'}`}>
+              <h3 className={`font-semibold text-[15px] truncate ${activeChatId === chat.$id ? 'text-white' : 'text-primary'}`}>{chat.name}</h3>
+              <span className={`text-xs ${activeChatId === chat.$id ? 'text-white/80' : 'text-muted'}`}>
                 {new Date(chat.$createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </span>
             </div>
-            <p className={`text-[14px] truncate ${activeChatId === chat.$id ? 'text-white/80' : 'text-gray-500'}`}>
+            <p className={`text-[14px] truncate ${activeChatId === chat.$id ? 'text-white/80' : 'text-secondary'}`}>
               {chat.lastMessage || 'No messages'}
             </p>
           </div>

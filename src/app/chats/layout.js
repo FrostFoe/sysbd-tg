@@ -132,16 +132,16 @@ export default function ChatsLayout({ children }) {
 
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-[#0f0f0f]">
+      <div className="flex h-screen items-center justify-center bg-page">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent"></div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen overflow-hidden dark:bg-[#0f0f0f] dark:text-white" style={{ "--accent-color": accentColor }}>
+    <div className="flex h-screen overflow-hidden bg-page text-primary" style={{ "--accent-color": accentColor }}>
       {/* Sidebar */}
-      <div className={`w-full md:w-[380px] lg:w-[420px] h-full flex flex-col z-20 border-r bg-white dark:bg-[#212121] border-gray-200 dark:border-black ${activeChatId ? 'hidden md:flex' : 'flex'}`}>
+      <div className={`w-full md:w-[380px] lg:w-[420px] h-full flex flex-col z-20 border-r bg-surface border-default ${activeChatId ? 'hidden md:flex' : 'flex'}`}>
         <SidebarHeader searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
         {sidebarView === 'main' && (
@@ -151,29 +151,29 @@ export default function ChatsLayout({ children }) {
           </div>
         )}
 
-        <div className="flex-1 overflow-y-auto custom-scrollbar bg-white dark:bg-[#212121]">
+        <div className="flex-1 overflow-y-auto custom-scrollbar bg-surface">
           {searchQuery.length >= 2 && (
-            <div className="flex flex-col border-b border-gray-100 dark:border-gray-800">
-              <div className="px-4 py-2 text-xs font-bold text-accent uppercase bg-gray-50 dark:bg-[#1c1c1d]">Global Search Results</div>
+            <div className="flex flex-col border-b border-default">
+              <div className="px-4 py-2 text-xs font-bold text-accent uppercase bg-input">Global Search Results</div>
               {isSearching ? (
-                <div className="p-4 text-center text-gray-400 text-xs">Searching for users...</div>
+                <div className="p-4 text-center text-muted text-xs">Searching for users...</div>
               ) : searchResults.length === 0 ? (
-                <div className="p-4 text-center text-gray-400 text-xs">No users found matching "@{searchQuery}"</div>
+                <div className="p-4 text-center text-muted text-xs">No users found matching "@{searchQuery}"</div>
               ) : (
                 searchResults.map((result) => (
                   <button 
                     key={result.$id} 
                     onClick={() => handleStartChat(result.userId, result.username)}
-                    className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-[#2c2c2e] transition w-full"
+                    className="flex items-center gap-3 px-3 py-2 hover:bg-hover transition w-full"
                   >
                     <div className="shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center font-bold text-gray-500">
+                      <div className="w-10 h-10 rounded-full bg-input flex items-center justify-center font-bold text-muted">
                         {result.username?.[0]?.toUpperCase()}
                       </div>
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-sm dark:text-white">@{result.username}</div>
-                      <div className="text-xs text-gray-500">Click to start chat</div>
+                      <div className="font-semibold text-sm text-primary">@{result.username}</div>
+                      <div className="text-xs text-secondary">Click to start chat</div>
                     </div>
                   </button>
                 ))
@@ -197,19 +197,19 @@ export default function ChatsLayout({ children }) {
         )}
 
         {chatContextMenu.visible && (
-          <div className="fixed z-[100] w-48 bg-white dark:bg-[#212121] rounded-xl shadow-xl border border-gray-100 dark:border-black py-2 animate-in fade-in scale-in duration-100 origin-top-left" style={{ top: chatContextMenu.y, left: chatContextMenu.x }}>
-            <button onClick={() => handleChatAction(sidebarView === 'archived' ? 'unarchive' : 'archive')} className="flex items-center gap-4 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left text-sm dark:text-white">
+          <div className="fixed z-[100] w-48 bg-surface rounded-xl shadow-xl border border-default py-2 animate-in fade-in scale-in duration-100 origin-top-left" style={{ top: chatContextMenu.y, left: chatContextMenu.x }}>
+            <button onClick={() => handleChatAction(sidebarView === 'archived' ? 'unarchive' : 'archive')} className="flex items-center gap-4 px-4 py-2 hover:bg-hover w-full text-left text-sm text-primary">
               {sidebarView === 'archived' ? <Plus size={16}/> : <Archive size={16}/>} 
               {sidebarView === 'archived' ? 'Unarchive' : 'Archive'}
             </button>
-            <button onClick={() => handleChatAction('mute')} className="flex items-center gap-4 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left text-sm dark:text-white"><VolumeX size={16}/> Mute</button>
-            <button onClick={() => handleChatAction('delete')} className="flex items-center gap-4 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left text-sm text-red-500"><Trash2 size={16}/> Delete Chat</button>
+            <button onClick={() => handleChatAction('mute')} className="flex items-center gap-4 px-4 py-2 hover:bg-hover w-full text-left text-sm text-primary"><VolumeX size={16}/> Mute</button>
+            <button onClick={() => handleChatAction('delete')} className="flex items-center gap-4 px-4 py-2 hover:bg-hover w-full text-left text-sm text-red-500"><Trash2 size={16}/> Delete Chat</button>
           </div>
         )}
       </div>
 
       {/* Main Content */}
-      <div className={`flex-1 flex flex-col relative bg-[#0e1621] ${!activeChatId ? 'hidden md:flex' : 'flex'}`}>
+      <div className={`flex-1 flex flex-col relative bg-chat ${!activeChatId ? 'hidden md:flex' : 'flex'}`}>
         {children}
       </div>
     </div>
