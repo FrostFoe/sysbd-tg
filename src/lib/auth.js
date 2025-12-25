@@ -46,6 +46,15 @@ export const authService = {
   // Login
   login: async (email, password) => {
     try {
+      // Check if a session already exists
+      try {
+        await account.get();
+        // If we're here, a session exists. Delete it to allow new login.
+        await account.deleteSession("current");
+      } catch (e) {
+        // No active session or error checking, safe to proceed
+      }
+
       return await account.createEmailPasswordSession(email, password);
     } catch (error) {
       console.error("Login error:", error);
