@@ -1,0 +1,30 @@
+{
+  "name": "starter-for-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@appwrite.io/pink-icons": "^1.0.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "appwrite": "^21.5.0",
+    "axios": "^1.13.2",
+    "lucide-react": "^0.562.0",
+    "next": "^16.1.1",
+    "node-appwrite": "^21.1.0",
+    "postcss": "^8.5.6",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.1.1",
+    "prettier": "3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2"
+  }
+}
