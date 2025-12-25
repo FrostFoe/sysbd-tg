@@ -20,7 +20,7 @@ export default function FoldersBar() {
   };
 
   return (
-    <div className="flex items-center gap-4 overflow-x-auto no-scrollbar border-b border-gray-100 dark:border-gray-800 pb-0 px-2">
+    <div className="flex items-center gap-4 overflow-x-auto no-scrollbar border-b border-default pb-0 px-2">
       {folders.map(f => (
         <button 
           key={f.id} 

@@ -25,8 +25,8 @@ export default function MessageBubble({ message, isOwn, type = "private", onCont
           isSticker || isGif 
             ? "bg-transparent shadow-none" 
             : isOwn
-              ? "bg-accent text-white rounded-tr-none"
-              : "bg-white dark:bg-[#212121] dark:text-white text-gray-900 rounded-tl-none"
+              ? "bg-message-out text-inverse rounded-tr-none"
+              : "bg-message-in text-primary rounded-tl-none"
         }`}
       >
         {message.replyToId && (
@@ -85,7 +85,7 @@ export default function MessageBubble({ message, isOwn, type = "private", onCont
         {message.reactions?.length > 0 && (
           <div className={`absolute -bottom-5 ${isOwn ? 'right-0' : 'left-0'} flex gap-1 z-10`}>
             {message.reactions.map((r, i) => (
-              <button key={i} className="bg-white dark:bg-[#2c2c2e] border border-black/5 dark:border-white/5 px-1.5 py-0.5 rounded-full text-[10px] shadow-sm flex items-center gap-1 dark:text-white">
+              <button key={i} className="bg-surface border border-default px-1.5 py-0.5 rounded-full text-[10px] shadow-sm flex items-center gap-1 text-primary">
                 <span>{r.emoji}</span>
                 {r.count > 1 && <span>{r.count}</span>}
               </button>

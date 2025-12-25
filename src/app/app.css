@@ -2,10 +2,65 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Semantic Colors */
+  --color-accent: var(--accent-color);
+  
+  --color-bg-page: var(--bg-page);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-chat: var(--bg-chat);
+  --color-bg-input: var(--bg-input);
+  --color-bg-hover: var(--bg-hover);
+  --color-bg-message-in: var(--bg-message-in);
+  --color-bg-message-out: var(--bg-message-out);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+  
+  --color-border-default: var(--border-default);
+  --color-border-input: var(--border-input);
 }
 
 :root {
   --accent-color: #3390ec;
+
+  /* Light Theme */
+  --bg-page: #f9fafb;      /* gray-50 */
+  --bg-surface: #ffffff;   /* white */
+  --bg-chat: #99ba92;
+  --bg-input: #f3f4f6;     /* gray-100 */
+  --bg-hover: #f3f4f6;     /* gray-100 */
+  --bg-message-in: #ffffff;
+  --bg-message-out: var(--accent-color);
+
+  --text-primary: #111827;   /* gray-900 */
+  --text-secondary: #4b5563; /* gray-600 */
+  --text-muted: #9ca3af;     /* gray-400 */
+  --text-inverse: #ffffff;
+  
+  --border-default: #e5e7eb; /* gray-200 */
+  --border-input: transparent;
+}
+
+.dark {
+  /* Dark Theme */
+  --bg-page: #0f0f0f;
+  --bg-surface: #212121;
+  --bg-chat: #0f0f0f;
+  --bg-input: #1c1c1d;
+  --bg-hover: #2c2c2e;
+  --bg-message-in: #212121;
+  --bg-message-out: var(--accent-color);
+
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db; /* gray-300 */
+  --text-muted: #6b7280;     /* gray-500 */
+  --text-inverse: #ffffff;
+  
+  --border-default: #000000;
+  --border-input: #374151; /* gray-700 */
 }
 
 .bg-accent {

@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/appwrite.svg" />
       </head>
-      <body className={`${inter.className} bg-gray-50 text-gray-900 transition-colors duration-200 dark:bg-[#0f0f0f] dark:text-white`}>
+      <body className={`${inter.className} bg-page text-primary transition-colors duration-200`}>
         <AuthProvider>
           <UIProvider>
             {children}
